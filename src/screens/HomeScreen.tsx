@@ -1,10 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Image, Dimensions} from 'react-native';
 import SearchBox from '../components/SearchBox';
+import Geolocation from 'react-native-geolocation-service';
 
 const {width, height} = Dimensions.get('window');
 
+type Cords = {
+  lat: number;
+  lng: number;
+};
+
 const HomeScreen = () => {
+  useEffect(() => {
+    Geolocation.getCurrentPosition(
+      position => {
+        setCoords({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      error => console.log(error.code, error.message),
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+      },
+    );
+  }, []);
+  const [coords, setCoords] = useState<Cords>();
+
   return (
     <View style={styles.root_container}>
       <View style={styles.img_container}>
