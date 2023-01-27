@@ -27,6 +27,7 @@ const HomeScreen = () => {
     );
   }, []);
   const [coords, setCoords] = useState<Cords>();
+  console.log(coords);
 
   return (
     <View style={styles.root_container}>

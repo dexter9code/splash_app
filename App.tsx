@@ -19,6 +19,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import WelcomeScreen from './src/screens/WelcomeScreen';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,7 +28,7 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return <HomeScreen />;
+  return <WelcomeScreen />;
 }
 
 export default App;
